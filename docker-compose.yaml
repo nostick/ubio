@@ -1,0 +1,31 @@
+services:
+  server:
+    image: ubio/challenge
+    container_name: server
+    build:
+      context: .
+      dockerfile: .docker/server/Dockerfile
+    environment:
+      MONGO_HOST: mongo
+      MONGO_USER: user
+      MONGO_PASS: password
+      MONGO_DB: ubio
+      MONGO_PORT: 27017
+      ENV: dev
+      EXPIRATION_TIME: 15 #In seconds
+      PORT: 4000
+    ports:
+      - 4000:4000
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    environment:
+      - MONGO_INITDB_DATABASE=ubio
+      - MONGO_INITDB_ROOT_USERNAME=ubio_secret_username
+      - MONGO_INITDB_ROOT_PASSWORD=ubio_secret_password
+    volumes:
+      - ./mongo/data:/data/db
+      - ./mongo/init-config.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+    ports:
+      - 27017:27017
