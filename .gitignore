@@ -106,3 +106,4 @@ dist
 # Custom ignores
 .idea
 mongo/data
+lib
