@@ -22,7 +22,7 @@ jobs:
         run: docker-compose build
         
       - name: Starting mongo container
-        run: docker-compose up mongo
+        run: docker-compose up -d mongo
         
       - name: Running tests
         run: docker-compose run tests npm run test
