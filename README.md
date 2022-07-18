@@ -230,9 +230,11 @@ it is only using the default config
 3. This software was created with NodeJS 18.x
 4. Probably i could implement more templates to make code more abstract
 but i got focused on the resolution with the time i used for solving this.
-5. I know that i skipped a lot of templating pattern
+5. I know that i skipped a lot of templating and models pattern
 6. If you have your own custom credentials for mongo, you can add them to the,
 `mongo/init-config.js` and then build the mongo image
 7. There are some basic validations made with Joi, but i realize that maybe, 
 could be a good idea to add a few more validations to the logi and types of
 data being used on those endpoints
+8. I created a Github actions, you can see the result of the tests in there 
+or check the badge at the top of readme
