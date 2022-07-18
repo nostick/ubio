@@ -8,7 +8,7 @@ const fakeGroup = 'fake-group';
 const fakeID = randomUUID();
 
 beforeAll(async () => {
-  testServer = new HttpServer(4001);
+  testServer = new HttpServer();
   await testServer.start();
 
   await mongo.upsert('instances', { id: fakeID }, { updatedAt: Date.now() }, {

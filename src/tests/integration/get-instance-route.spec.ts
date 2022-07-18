@@ -7,7 +7,7 @@ let testServer: HttpServer;
 const fakeData = ['group1', 'group1', 'group1', 'group2'];
 
 beforeAll(async () => {
-  testServer = new HttpServer(4001);
+  testServer = new HttpServer();
   await testServer.start();
 
   for (const group of fakeData) {

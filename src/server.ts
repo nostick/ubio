@@ -6,9 +6,9 @@ import routes from './routes';
 export class HttpServer {
   private readonly _server: Server
 
-  constructor(port: number = 4000) {
+  constructor() {
     this._server = Hapi.server({
-      port: process.env.PORT || port,
+      port: process.env.PORT,
       host: '0.0.0.0',
     });
   }
