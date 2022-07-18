@@ -4,7 +4,7 @@ import { Server } from '@hapi/hapi';
 import routes from './routes';
 
 export class HttpServer {
-  private _server: Server
+  private readonly _server: Server
 
   /**
    * Here maybe we can pass a json payload with some arguments to config the server,
@@ -21,16 +21,15 @@ export class HttpServer {
   }
 
   async start(): Promise<void> {
-    console.log(`Listening on ${this._server.settings.host}:${this._server.settings.port}`);
     this.registerRoutes();
     return this.server.start();
   }
 
-  registerRoutes(): void {
+  registerRoutes(): any {
     try {
       this._server.route(routes);
     } catch (err) {
-      console.log(err);
+      return err;
     }
   }
 
@@ -39,6 +38,7 @@ export class HttpServer {
   }
 }
 
+/* istanbul ignore next */
 process.on('unhandledRejection', (err) => {
   console.error('unhandledRejection');
   console.error(err);

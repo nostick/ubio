@@ -1,11 +1,12 @@
 import { Request, ResponseObject, ResponseToolkit } from '@hapi/hapi';
 import mongo from '../../lib/mongo';
+import { Document } from 'mongodb';
 
 export async function insertInstanceWithGroup(request: Request, h: ResponseToolkit): Promise<ResponseObject> {
-  let response: any;
-  try {
-    const {group, id} = request.params;
+  let response: Document = {};
+  const {group, id} = request.params;
 
+  try {
     await mongo.init();
     response = await mongo.upsert('instances', {id, group},
       {
@@ -16,7 +17,7 @@ export async function insertInstanceWithGroup(request: Request, h: ResponseToolk
       });
     response = await response.value
   } catch (e) {
-    console.log('Error on insertInstanceWithGroup Route', e);
+    return h.response(`Error on POST /v1/${group}/${id}: ${e}`).code(500);
   } finally {
     await mongo.close();
   }

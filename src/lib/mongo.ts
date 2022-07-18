@@ -38,6 +38,10 @@ class Mongo {
     return this.client.db(db).collection(collection).deleteOne(filter);
   }
 
+  async cleanCollection(collection: string) {
+    return this.client.db(db).collection(collection).deleteMany({});
+  }
+
   async aggregate(collection: string, aggr: Document[]): Promise<Document> {
     return this.client.db(db).collection(collection).aggregate(aggr);
   }

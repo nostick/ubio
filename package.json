@@ -7,7 +7,7 @@
     "dev:tsc": "tsc --watch -p .",
     "dev:serve": "nodemon -e js -w lib lib/main.js",
     "dev": "run-p dev:*",
-    "test": "jest --coverage"
+    "test": "jest --maxWorkers=1 --coverage"
   },
   "repository": "git+https://github.com/nostick/ubio.git",
   "author": "Cesar Sulbaran",

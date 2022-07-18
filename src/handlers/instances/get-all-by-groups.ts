@@ -3,9 +3,10 @@ import { Document } from 'mongodb';
 import mongo from '../../lib/mongo';
 
 export async function getAllByGroups(request: Request, h: ResponseToolkit): Promise<ResponseObject> {
-  let response;
+  let response: Document = [];
+  const {group} = request.params;
+
   try {
-    const {group} = request.params;
     await mongo.init();
 
     response = await mongo.find('instances', group ? {group} : {});
@@ -15,7 +16,7 @@ export async function getAllByGroups(request: Request, h: ResponseToolkit): Prom
       response = await aggregation.toArray();
     }
   } catch (e) {
-    console.log('Error on getAll Route', e);
+    return h.response(`Error on GET /v1/{group?}: ${e}`).code(500);
   } finally {
     await mongo.close();
   }
@@ -41,7 +42,7 @@ function queryAgg(): Document[] {
       $match: {
         count: {
           $gte: 1,
-        },
+        }
       },
     },
   ];
