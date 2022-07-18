@@ -1,5 +1,7 @@
 # Ubio Test Challenge
 
+![flujo de trabajo de ejemplo](https://github.com/nostick/ubio/actions/workflows/main.yaml/badge.svg)
+
 ## Getting Started
 
 This is the testing challenge for Backend Software Engineer position at Ubio, for details please follow this
