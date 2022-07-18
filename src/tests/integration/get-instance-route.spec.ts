@@ -72,23 +72,3 @@ describe('Testing /v1/:group route', () => {
       });
   });
 });
-
-/**
- * Since i'm using the same route with optional arguments, i'll be testing here the specs regarding
- * route GET / and GET /:group
- */
-
-/**
- * Probably the best to do is to create an ErrorHandler or something to catch and format
- * errors to make them more readable and usable, for now just returning the error that happens
- */
-
-/**
- * There is a test case on challenge that says
- * -groups containing 0 instances should not be returned-
- * This is being filtered by the aggregation framework when we get the instances from mongo
- * also i don't think this case is actually possible to recreate since i'm using a single collection
- * with instances and then grouping them by group key, so if there is not any instance, then neither the
- * group or instance id would exists in collection, so that's why i'm not creating a test for that, basically
- * no possible to recreate with this DB data model.
- */

@@ -4,9 +4,12 @@
   "description": "Ubio Test Challenge",
   "main": "lib/main.js",
   "scripts": {
-    "dev:tsc": "tsc --watch -p .",
+    "dev:build": "tsc --watch -p .",
     "dev:serve": "nodemon -e js -w lib lib/main.js",
     "dev": "run-p dev:*",
+    "deploy:serve": "nodemon -e js -w lib lib/main.js",
+    "deploy:build": "tsc -p .",
+    "deploy": "run-p deploy:*",
     "test": "jest --maxWorkers=1 --coverage"
   },
   "repository": "git+https://github.com/nostick/ubio.git",
