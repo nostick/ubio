@@ -8,7 +8,7 @@ export class HttpServer {
 
   constructor() {
     this._server = Hapi.server({
-      port: process.env.PORT,
+      port: process.env.PORT || 4000,
       host: '0.0.0.0',
     });
   }

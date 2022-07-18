@@ -17,14 +17,6 @@ describe('Server tests', () => {
   });
 
   it('should start server', async () => {
-    const serverUri = 'http://0.0.0.0:4001';
-    testServer = new HttpServer();
-    await testServer.start();
-    expect(testServer.server.info.uri).toEqual(serverUri);
-
-  });
-
-  it('should start server on default port', async () => {
     const serverUri = 'http://0.0.0.0:4000';
     testServer = new HttpServer();
     await testServer.start();
