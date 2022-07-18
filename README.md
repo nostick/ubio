@@ -175,4 +175,62 @@ for more details about the notes of the tests:
 ```shell
 # For running available tests locally
 npm run test
+
+# For running available tests with docker
+docker-compose buld tests
+docker-compose run tests npm run test
+
+################################################
+# You should get an output like this either way
+################################################
+
+> ubio@1.0.0 test
+> jest --maxWorkers=1 --coverage
+
+ PASS  src/tests/integration/post-instance-route.spec.ts (5.811 s)
+ PASS  src/tests/integration/get-instance-route.spec.ts
+ PASS  src/tests/integration/delete-instance-route.spec.ts
+ PASS  src/tests/unit/server.spec.ts
+ PASS  src/tests/unit/config.spec.ts
+--------------------------------|---------|----------|---------|---------|-------------------
+File                            | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s
+--------------------------------|---------|----------|---------|---------|-------------------
+All files                       |     100 |      100 |     100 |     100 |
+ src                            |     100 |      100 |     100 |     100 |
+  config.ts                     |     100 |      100 |     100 |     100 |
+  server.ts                     |     100 |      100 |     100 |     100 |
+ src/handlers/instances         |     100 |      100 |     100 |     100 |
+  delete-instance.ts            |     100 |      100 |     100 |     100 |
+  get-all-by-groups.ts          |     100 |      100 |     100 |     100 |
+  handlers.ts                   |     100 |      100 |     100 |     100 |
+  insert-instance-with-group.ts |     100 |      100 |     100 |     100 |
+ src/lib                        |     100 |      100 |     100 |     100 |
+  mongo.ts                      |     100 |      100 |     100 |     100 |
+ src/routes                     |     100 |      100 |     100 |     100 |
+  index.ts                      |     100 |      100 |     100 |     100 |
+ src/routes/v1                  |     100 |      100 |     100 |     100 |
+  index.ts                      |     100 |      100 |     100 |     100 |
+ src/routes/v1/instances        |     100 |      100 |     100 |     100 |
+  instances.ts                  |     100 |      100 |     100 |     100 |
+--------------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 5 passed, 5 total
+Tests:       18 passed, 18 total
+Snapshots:   0 total
+Time:        9.303 s
+Ran all test suites.
 ```
+
+## Notes
+1. There is not any auth/authz mechanism on this repo
+2. The hapi server is not receiving any argument on the constructor,
+it is only using the default config
+3. This software was created with NodeJS 18.x
+4. Probably i could implement more templates to make code more abstract
+but i got focused on the resolution with the time i used for solving this.
+5. I know that i skipped a lot of templating pattern
+6. If you have your own custom credentials for mongo, you can add them to the,
+`mongo/init-config.js` and then build the mongo image
+7. There are some basic validations made with Joi, but i realize that maybe, 
+could be a good idea to add a few more validations to the logi and types of
+data being used on those endpoints
