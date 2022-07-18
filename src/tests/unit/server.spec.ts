@@ -1,5 +1,6 @@
 import { HttpServer } from '../../server';
 import mongo from '../../lib/mongo';
+import config from '../../config';
 
 let testServer: HttpServer;
 
@@ -21,7 +22,14 @@ describe('Server tests', () => {
     testServer = new HttpServer();
     await testServer.start();
     expect(testServer.server.info.uri).toEqual(serverUri);
+  });
 
+  it('should start server with default port', async () => {
+    config.port = '';
+    const serverUri = 'http://0.0.0.0:4000';
+    testServer = new HttpServer();
+    await testServer.start();
+    expect(testServer.server.info.uri).toEqual(serverUri);
   });
 
   it('should fail starting server', async () => {

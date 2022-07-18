@@ -1,3 +1,14 @@
+x-app: &app
+  MONGO_HOST: mongo
+  MONGO_USER: user
+  MONGO_PASS: password
+  MONGO_DB: ubio
+  MONGO_PORT: 27017
+  ENV: dev
+  EXPIRATION_TIME: 15 #In seconds
+  PORT: 4000
+
+
 services:
   server:
     image: ubio/challenge
@@ -6,14 +17,7 @@ services:
       context: .
       dockerfile: .docker/server/Dockerfile
     environment:
-      MONGO_HOST: mongo
-      MONGO_USER: user
-      MONGO_PASS: password
-      MONGO_DB: ubio
-      MONGO_PORT: 27017
-      ENV: dev
-      EXPIRATION_TIME: 15 #In seconds
-      PORT: 4000
+      <<: *app
     ports:
       - 4000:4000
 
@@ -29,3 +33,12 @@ services:
       - ./mongo/init-config.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     ports:
       - 27017:27017
+
+  tests:
+    image: ubio/challenge-test
+    container_name: tests
+    build:
+      context: .
+      dockerfile: .docker/tests/Dockerfile
+    environment:
+      <<: *app

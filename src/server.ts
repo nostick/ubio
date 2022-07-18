@@ -2,13 +2,14 @@ import Hapi from '@hapi/hapi';
 import { Server } from '@hapi/hapi';
 
 import routes from './routes';
+import config from './config';
 
 export class HttpServer {
   private readonly _server: Server
 
   constructor() {
     this._server = Hapi.server({
-      port: process.env.PORT || 4000,
+      port: config.port || 4000,
       host: '0.0.0.0',
     });
   }
