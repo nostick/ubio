@@ -7,4 +7,4 @@ RUN yarn install
 
 COPY . .
 
-ENTRYPOINT npm run dev
+ENTRYPOINT npm run deploy

@@ -170,8 +170,9 @@ successfully otherwise all the tests will fail
 
 Also there are some notes regarding these on a special sections, please visit this link
 for more details about the notes of the tests: 
+[Testing notes](https://github.com/nostick/ubio/blob/main/src/tests/README.md)
 
 ```shell
-# For running available tests
+# For running available tests locally
 npm run test
 ```

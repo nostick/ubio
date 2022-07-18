@@ -6,7 +6,7 @@ import mongo from '../../lib/mongo';
 let testServer: HttpServer;
 
 beforeAll(async () => {
-  testServer = new HttpServer();
+  testServer = new HttpServer(4001);
   await testServer.start();
 });
 
