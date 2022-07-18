@@ -1,6 +1,6 @@
 # Ubio Test Challenge
 
-![flujo de trabajo de ejemplo](https://github.com/nostick/ubio/actions/workflows/main.yaml/badge.svg)
+![CI](https://github.com/nostick/ubio/actions/workflows/main.yaml/badge.svg)
 
 ## Getting Started
 
